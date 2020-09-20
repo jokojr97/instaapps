@@ -23,7 +23,7 @@ Auth::routes();
 
 
 Route::namespace('admin')->prefix('admin')->name('admin.')->middleware('auth', 'can:role-admin')->group(function(){
-	Route::get('/dashboard', [UsersController::class, 'index'])->name('dashboard.index');
+	Route::get('/dashboard', [UsersController::class, 'index'])->name('dashboard.index');	
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
