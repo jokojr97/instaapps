@@ -14,6 +14,14 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/assets/admin/fontawesome-free/css/all.min.css">
     <link href="/assets/admin/main.css" rel="stylesheet"></head>
+    <style type="text/css">
+        .circle-rounded {
+            object-fit: cover;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+        }
+    </style>
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -64,25 +72,23 @@
                                 <div class="widget-content-left">
                                     <div class="btn-group">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                            <img width="42" class="rounded-circle" src="/assets/admin/images/avatars/1.jpg" alt="">
+                                            <img width="42" class="circle-rounded" src="/assets/images/profiles/{{ $user->details->foto_profile }}" alt="">
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <button type="button" tabindex="0" class="dropdown-item">User Account</button>
-                                            <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-                                            <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                            <button type="button" tabindex="0" class="dropdown-item">Actions</button>
+                                            <button type="button" tabindex="0" class="dropdown-item" onclick="window.location.href = '/admin/profilesaya'"><i class="fas fa-user"></i> &nbsp; Profile</button>
                                             <div tabindex="-1" class="dropdown-divider"></div>
-                                            <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                            <button type="button" tabindex="0" class="dropdown-item" onclick="myfunction()"><i class="fas fa-power-off"></i> &nbsp; Logout</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
-                                    <div class="widget-heading">
-                                        Alina Mclourd
+                                    
+                                    <div class="widget-heading text-capitalize">
+                                        {{$user->name}}
                                     </div>
                                     <div class="widget-subheading">
-                                        VP People Manager
+                                        {{$user->roles[0]->name}}
                                     </div>
                                 </div>
                                 <div class="widget-content-right header-user-info ml-3">
@@ -137,25 +143,22 @@
                                         <div class="widget-content-left">
                                             <div class="btn-group">
                                                 <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                                    <img width="42" class="rounded-circle" src="/assets/admin/images/avatars/1.jpg" alt="">
+                                                    <img width="42" class="circle-rounded" src="/assets/images/profiles/{{ $user->details->foto_profile }}" alt="">
                                                     <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                                 </a>
                                                 <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                                    <button type="button" tabindex="0" class="dropdown-item">User Account</button>
-                                                    <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-                                                    <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                                    <button type="button" tabindex="0" class="dropdown-item">Actions</button>
+                                                    <button type="button" tabindex="0" class="dropdown-item" onclick="window.location.href = '/admin/profilesaya'"><i class="fas fa-user"></i> &nbsp; Profile</button>
                                                     <div tabindex="-1" class="dropdown-divider"></div>
-                                                    <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                                    <button type="button" tabindex="0" class="dropdown-item" onclick="myfunction()"><i class="fas fa-power-off"></i> &nbsp; Logout</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="widget-content-left  ml-3 header-user-info">
-                                            <div class="widget-heading">
-                                                Alina Mclourd
+                                        <div class="widget-content-left  ml-3">
+                                            <div class="widget-heading text-capitalize">
+                                                {{$user->name}}
                                             </div>
                                             <div class="widget-subheading">
-                                                VP People Manager
+                                                {{$user->roles[0]->name}}
                                             </div>
                                         </div>
                                         <div class="widget-content-right header-user-info ml-3">
@@ -178,60 +181,51 @@
                                 <a href="#">
                                     <i class="metismenu-icon fas fa-comments"></i>
                                     Pesan
-                                    <i class="metismenu-state-icon" style="margin-top: -25px;opacity: 100%"><span class="badge badge-danger" style="font-size: 10px">9</span></i>
+                                    <i class="metismenu-state-icon" style="margin-top: -25px;opacity: 100%"><span class="badge badge-danger" style="font-size: 10px">0</span></i>
                                 </a>
                                 <a href="#">
                                     <i class="metismenu-icon far fa-newspaper"></i>
                                     Postingan
-                                    <i class="metismenu-state-icon" style="margin-top: -25px;opacity: 100%"><span class="badge badge-danger" style="font-size: 10px">19</span></i>
+                                    <i class="metismenu-state-icon" style="margin-top: -25px;opacity: 100%"><span class="badge badge-danger" style="font-size: 10px">0</span></i>
                                 </a>
                             </li>
 
                             <li class="app-sidebar__heading">Teman</li>
                             <li>
+                                <?php for ($i=0; $i <4 ; $i++) { ?>
                                 <a href="dashboard-boxes.html">
                                     <i class="metismenu-icon" style="opacity: 100%">
-                                        <img width="32" class="rounded-circle" src="/assets/admin/images/avatars/1.jpg" alt="">
+                                        <img width="32" class="circle-rounded" src="/assets/admin/images/avatars/1.jpg" alt="">
                                     </i>
-                                    <span><b>Joko Riyadi </b><i> (online)</i></span>
-
+                                    <span class="ml-2"><b>Joko Riyadi </b><i> (online)</i></span>
                                 </a>
-                                <a href="dashboard-boxes.html">
-                                    <i class="metismenu-icon" style="opacity: 100%">
-                                        <img width="32" class="rounded-circle" src="/assets/admin/images/avatars/1.jpg" alt="">
-                                    </i>
-                                    <span><b>Joko Riyadi </b><i> (online)</i></span>
+                                <?php } ?>
+                            </li>
+                            <li class="app-sidebar__heading">Logout</li>
+                            <li>
+                                <a href="#" class="mm-active" onclick="myfunction()">
+                                    <i class="metismenu-icon fas fa-power-off"></i>
+                                    Logout
                                 </a>
-                                <a href="dashboard-boxes.html">
-                                    <i class="metismenu-icon" style="opacity: 100%">
-                                        <img width="32" class="rounded-circle" src="/assets/admin/images/avatars/1.jpg" alt="">
-                                    </i>
-                                    <span><b>Joko Riyadi </b><i> (online)</i></span>
-                                </a>
-                                <a href="dashboard-boxes.html">
-                                    <i class="metismenu-icon" style="opacity: 100%">
-                                        <img width="32" class="rounded-circle" src="/assets/admin/images/avatars/1.jpg" alt="">
-                                    </i>
-                                    <span><b>Joko Riyadi </b><i> (online)</i></span>
-                                </a>
+                                <form id="logout-form" action="/logout" method="POST" style="display: none">
+                                @csrf
+                                </form>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="app-main__outer">
-                <div class="app-main__inner">
-                    <div class="form-row ml-0">
-                        <div class="col-lg-8">                            
-                            @yield('content')
-                        </div>
-                        <div class="col-lg-4">
-                            <img src="/assets/images/3.png" class="img-fluid p-2">
-                            <!-- <img src="/assets/images/2.png" class="img-fluid p-2"> -->
-                        </div>
+                <div class="form-row ml-3 mt-3">
+                    <div class="col-lg-8">                            
+                        @yield('content')
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="/assets/images/3.png" class="img-fluid p-2">
+                        <!-- <img src="/assets/images/2.png" class="img-fluid p-2"> -->
                     </div>
                 </div>
-                <div class="app-wrapper-footer">
+                <div class="app-wrapper-footer" style="margin-left: -20px">
                     <div class="app-footer">
                         <div class="app-footer__inner">
                             <div class="app-footer-left">
@@ -275,7 +269,17 @@
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script type="text/javascript" src="/assets/admin/scripts/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="/Assets/proyekbaru/js/jquery-migrate-3.0.1.min.js"></script>
-
+    <script type="text/javascript"> 
+      function myfunction(){
+        var r = confirm('Are you sure want to logout?');
+        if (r == true) {
+            event.preventDefault();document.getElementById('logout-form').submit();
+        }else {
+            console.log('cancel');
+        }
+      }
+      
+    </script>
+    @yield('script_tambahan')
 </body>
 </html>
