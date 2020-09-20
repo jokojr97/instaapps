@@ -11,7 +11,7 @@
         </div>
 
         <div class="form-group">
-            <label for="name">{{ __('Name') }}</label>
+            <label for="name">{{ __('Username') }}</label>
             <div>
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                 @error('name')
@@ -35,9 +35,9 @@
         </div>
 
         <div class="form-group">
-            <label for="username">{{ __('Username') }}</label>
+            <label for="datebirth">{{ __('Date Birth') }}</label>
             <div>
-                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
+                <input id="datebirth" type="date" class="form-control @error('datebirth') is-invalid @enderror" name="datebirth" value="{{ old('datebirth') }}" required autocomplete="datebirth">
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

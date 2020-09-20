@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
-use App\RoleUsers;
+use App\Models\User;
+use App\Models\DetailUser;
+use App\Models\RoleUsers;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -77,8 +78,14 @@ class RegisterController extends Controller
             $role = 2;
         }
 
+        $datebirth = $data['datebirth'];
+        $address = $data['address'];
+        $phone = $data['phone'];
+
         $user = User::latest()->first();
+
         RoleUsers::create(['role_id' => $role, 'user_id' => $user->id]);
+        DetailUser::create(['id_user' => $user->id, 'tanggal_lahir' => $datebirth, 'alamat' => $address, 'telpon' => $phone]);
 
         return $users;
     }

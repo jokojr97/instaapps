@@ -15,6 +15,11 @@ class CreateDetailUsersTable extends Migration
     {
         Schema::create('detail_users', function (Blueprint $table) {
             $table->id();
+            $table->string('id_user');
+            $table->string('tanggal_lahir');
+            $table->string('foto_profile');
+            $table->string('alamat');
+            $table->string('telpon');
             $table->timestamps();
         });
     }
